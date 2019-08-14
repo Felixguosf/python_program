@@ -1,6 +1,7 @@
 # coding=utf-8
 import os
 import re
+import configparser
 
 class app_tool():
     def __init__(self):
@@ -21,6 +22,11 @@ class app_tool():
         for files in os.walk('./../package'):
             appPackage = files[-1][-1]
         return appPackage
+
+    def get_config(self,section,option):
+        cf=configparser.ConfigParser()
+        cf.read('../config/config.ini',encoding='utf-8')
+        cf.get(section=section,option=option)
 
 
 
